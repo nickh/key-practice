@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Musical Key Practice</title>
+  <script>
+var notes = Array("C","D","E","F","G","A","B");
+var note_variations = Array("","&#9839;","&#9837;");
+var chord_variations = Array("","m","7","m7");
+
+window.onload=function(){
+  showKey();
+}
+
+function showKey() {
+  var note     = notes[Math.floor(Math.random()*notes.length)];
+  var notevar  = note_variations[Math.floor(Math.random()*note_variations.length)];
+  var chordvar = chord_variations[Math.floor(Math.random()*chord_variations.length)];
+
+  var next = note + notevar + chordvar;
+  var span = document.getElementById('key');
+  span.innerHTML = next;
+
+  duration = Number(document.getElementById('duration').value) * 1000;
+  setTimeout(function(){ showKey(); }, duration);
+}
+  </script>
+</head>
+<body>
+  <h1>Musical Key Practice</h1>
+  <form action='#'>
+    Show each key for:
+    <input type="text" size="3" name="duration" id="duration" value="10">
+    seconds.
+  </form>
+
+  <span id="key"></span>
+</body>
+</html>
