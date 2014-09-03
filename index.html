@@ -2,11 +2,10 @@
 <head>
   <title>Musical Key Practice</title>
   <script>
-var notes = Array("C","D","E","F","G","A","B");
 var all_semis   = Array("&#9839;","","&#9837;");
 var only_sharps = all_semis.slice(0,2);
 var only_flats  = all_semis.slice(1,3);
-var semi_tones  = { C: only_sharps, D: all_semis, E: only_flats, F: only_sharps, G: all_semis, A: all_semis, B: only_flats };
+var note_variations  = { C: only_sharps, D: all_semis, E: only_flats, F: only_sharps, G: all_semis, A: all_semis, B: only_flats };
 var chord_variations = Array("","m","7","m7");
 var scale_variations = Array("","m");
 
@@ -19,8 +18,8 @@ function rand(list) {
 }
 
 function showKey() {
-  var note     = rand(notes);
-  var notevar  = rand(semi_tones[note]);
+  var note     = rand(Object.keys(note_variations));
+  var notevar  = rand(note_variations[note]);
   var chordvar = rand(chord_variations);
   var scalevar = rand(scale_variations);
 
